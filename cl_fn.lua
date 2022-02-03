@@ -40,7 +40,7 @@ AddEventHandler("onCommand", function()
                     Vehicle = false
                 },
                 onComplete = function(cancelled)
-                    exports['dopeNotify2']:Alert("", "You have found a customer. Meet them at the location marked on your gps.", 3000, 'success')
+                    exports['mythic_notify']:SendAlert("inform", "You have found a customer. Meet them at the location marked on your gps.", 5000)
                     local buyerChoice = math.random(1, 5)
                     if buyerChoice == 1 then
                         TriggerEvent("JobLocation1", PlayerPedId())
@@ -61,7 +61,7 @@ AddEventHandler("onCommand", function()
                 end
             })
         else
-            exports['dopeNotify2']:Alert("", "You have an active job already", 3000, 'error')
+            exports['mythic_notify']:SendAlert("inform", "You have an active job already", 3000)
         end
     
     end)
@@ -86,13 +86,13 @@ AddEventHandler("onPlug", function()
                     Vehicle = false
                 },
                 onComplete = function(cancelled)
-                    exports['dopeNotify2']:Alert("", "Your connect would like to meet with you.", 5000, 'success')
+                    exports['mythic_notify']:SendAlert("inform", "Your connect would like to meet with you.", 5000)
                     TriggerEvent("callPlug", PlayerPedId())
                     SetNewWaypoint(124.91, -3119.02)
                 end
             })
         else
-            exports['dopeNotify2']:Alert("", "You have an active job already", 3000, 'error')
+            exports['mythic_notify']:SendAlert("inform", "You have an active job already", 3000)
         end
     end)
 end)
@@ -140,7 +140,7 @@ AddEventHandler("JobLocation1", function()
                 Wait(5000)
                 DeleteEntity(him)
                 TriggerServerEvent("PayOut1", ped)
-                exports['dopeNotify2']:Alert("", "Here's Your Money BRO!!", 3000, 'success')
+                exports['mythic_notify']:SendAlert("inform", "Here's Your Money BRO!!", 4000)
                 active = false
                 break
             end
@@ -191,7 +191,7 @@ AddEventHandler("JobLocation2", function()
                 Wait(5000)
                 DeleteEntity(her)
                 TriggerServerEvent("PayOut2", ped)
-                exports['dopeNotify2']:Alert("", "Aww Baby. I'm a little short. Here!!", 5000, 'success')
+                exports['mythic_notify']:SendAlert("inform", "Aww Baby. I'm a little short. Here!!", 5000)
                 active = false
                 break
             end
@@ -243,7 +243,7 @@ AddEventHandler("JobLocation3", function()
                 Wait(5000)
                 DeleteEntity(her)
                 TriggerServerEvent("PayOut1", ped)
-                exports['dopeNotify2']:Alert("", "Good Looks Foo. I'g going back to fuck your mom", 9000, 'success')
+                exports['mythic_notify']:SendAlert("inform", "Good Looks Foo. I'g going back to fuck your mom", 9000)
                 active = false
                 break
             end
@@ -295,7 +295,7 @@ AddEventHandler("JobLocation4", function()
                 Wait(5000)
                 DeleteEntity(her)
                 TriggerServerEvent("PayOut3", ped)
-                exports['dopeNotify2']:Alert("", "Thanks Bro. Here's my allowance", 9000, 'success')
+                exports['mythic_notify']:SendAlert("inform", "Thanks Bro. Here's my allowance", 9000)
                 active = false
                 break
             end
@@ -347,7 +347,7 @@ AddEventHandler("JobLocation5", function()
                 Wait(5000)
                 DeleteEntity(her)
                 TriggerServerEvent("PayOut4", ped)
-                exports['dopeNotify2']:Alert("", "If you tell anyone I'm here. You will have no Wifi", 10000, 'success')
+                exports['mythic_notify']:SendAlert("inform", "If you tell anyone I'm here. You will have no Wifi", 10000)
                 active = false
                 break
             end
@@ -383,7 +383,7 @@ AddEventHandler("callPlug", function()
                 while (not HasAnimDictLoaded("gestures@m@standing@casual")) do Wait(0) end
                 TaskPlayAnim(ped, 'gestures@m@standing@casual', 'gesture_no_way', 8.0, -8.0, -1, 0, 0, false, false, false)
                 TaskPlayAnim(her, 'gestures@f@standing@casual', 'gesture_point', 8.0, -8.0, -1, 0, 0, false, false, false)
-                exports['dopeNotify2']:Alert("", "Take this note and give it to Cortez at the airport. He is on the third level", 20000, 'info')
+                exports['mythic_notify']:SendAlert("inform", "Take this note and give it to Cortez at the airport. He is on the third level", 10000)
                 Wait(1000)
                 TriggerServerEvent("GiveNote", ped)
                 SetNewWaypoint(-1043.82, -2635.57)
@@ -428,7 +428,7 @@ AddEventHandler("callPlug", function()
                 TriggerServerEvent("TakeNote", ped)
                 Wait(5000)
                 DeleteEntity(her)
-                exports['dopeNotify2']:Alert("", "Thanks Foo. Take the shit from the van.", 10000, 'success')
+                exports['mythic_notify']:SendAlert("inform", "Thanks Foo. Take the shit from the van.", 10000)
                 active = false
                 break
             end
@@ -455,7 +455,7 @@ AddEventHandler("callPlug", function()
                 TriggerServerEvent("GivePack", ped)
                 Wait(5000)
                 
-                exports['dopeNotify2']:Alert("", "Get out the area.", 10000, 'success')
+                exports['mythic_notify']:SendAlert("inform", "Get out of the area.", 10000)
                 active = false
                 hasBox = true
                 break
